@@ -10,7 +10,7 @@ import {
 function SideBarToolTip({ href, content, isActive }) {
   const classes = isActive
     ? "bg-blue-50 text-blue-600"
-    : "hover:text-blue-600 hover:bg-blue-50 text-black bg-white";
+    : "hover:text-blue-600 hover:bg-blue-50 text-slate-900 bg-white";
 
   return (
     <TooltipProvider>
@@ -20,7 +20,7 @@ function SideBarToolTip({ href, content, isActive }) {
             href={href}
             className={
               classes +
-              " flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors md:h-8 md:w-8"
+              " flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
             }
           >
             {content === "Home" && <Home className="h-5 w-5" />}
@@ -30,7 +30,7 @@ function SideBarToolTip({ href, content, isActive }) {
         </TooltipTrigger>
         <TooltipContent
           side="right"
-          className="bg-blue-50 text-blue-600 font-medium"
+          className="bg-white text-slate-900 font-medium"
         >
           {content}
         </TooltipContent>
