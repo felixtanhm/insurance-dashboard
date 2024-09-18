@@ -7,21 +7,33 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 
-function SideBarToolTip({ href }) {
+function SideBarToolTip({ href, content, isActive }) {
+  const classes = isActive
+    ? "bg-blue-50 text-blue-600"
+    : "hover:text-blue-600 hover:bg-blue-50 text-black bg-white";
+
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
           <Link
             href={href}
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8 bg-accent text-black"
+            className={
+              classes +
+              " flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors md:h-8 md:w-8"
+            }
           >
-            {href === "/" && <Home className="h-5 w-5" />}
-            {href === "/policies" && <Wallet className="h-5 w-5" />}
-            {href === "/customers" && <Users2 className="h-5 w-5" />}
+            {content === "Home" && <Home className="h-5 w-5" />}
+            {content === "Policies" && <Wallet className="h-5 w-5" />}
+            {content === "Customers" && <Users2 className="h-5 w-5" />}
           </Link>
         </TooltipTrigger>
-        <TooltipContent side="right">Home</TooltipContent>
+        <TooltipContent
+          side="right"
+          className="bg-blue-50 text-blue-600 font-medium"
+        >
+          {content}
+        </TooltipContent>
       </Tooltip>
     </TooltipProvider>
   );
