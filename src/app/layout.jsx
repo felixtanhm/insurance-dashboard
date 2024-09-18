@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="bg-slate-100 h-screen">
+        <div className="bg-slate-300 h-screen">
           <SideBar />
           <div className="ml-14">
             <TopBar />

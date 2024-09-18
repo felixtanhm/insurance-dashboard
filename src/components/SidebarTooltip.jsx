@@ -20,7 +20,7 @@ function SideBarToolTip({ href, content, isActive }) {
             href={href}
             className={
               classes +
-              " flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:h-8 md:w-8"
+              " flex h-9 w-9 items-center justify-center rounded-md transition-colors md:h-8 md:w-8"
             }
           >
             {content === "Home" && <Home className="h-5 w-5" />}
