@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Home, Wallet, Users2 } from "lucide-react";
 import {
@@ -6,11 +8,19 @@ import {
   TooltipTrigger,
   TooltipProvider,
 } from "@/components/ui/tooltip";
+import { useEffect, useState } from "react";
 
-function SideBarToolTip({ href, content, isActive }) {
-  const classes = isActive
-    ? "bg-blue-50 text-blue-600"
-    : "hover:text-blue-600 hover:bg-blue-50 text-slate-900 bg-white";
+function SideBarToolTip({ href, content }) {
+  const [pathName, setPathName] = useState("");
+
+  useEffect(() => {
+    setPathName(window.location.pathname);
+  }, []);
+
+  const classes =
+    pathName === href
+      ? "bg-blue-50 text-blue-600"
+      : "hover:text-blue-600 hover:bg-blue-50 text-slate-900 bg-white";
 
   return (
     <TooltipProvider>

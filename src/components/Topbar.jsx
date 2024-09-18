@@ -1,5 +1,3 @@
-"use client";
-
 import ButtonIcon from "@/components/ButtonIcon";
 import {
   DropdownMenu,
@@ -11,22 +9,11 @@ import {
   DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
 import { ExitIcon } from "@radix-ui/react-icons";
-import { useState, useEffect } from "react";
 
 function TopBar() {
-  const [currentPath, setCurrentPath] = useState("");
-
-  useEffect(() => {
-    setCurrentPath(window.location.pathname);
-  }, []);
-
   return (
     <div className="flex justify-between p-4">
-      <ButtonIcon
-        content={"Add Policy"}
-        href={"/policies/add"}
-        display={currentPath === "/"}
-      />
+      <ButtonIcon content={"Add Policy"} href={"/policies/add"} />
       <DropdownMenu>
         <DropdownMenuTrigger className="bg-white text-slate-900 p-2 rounded-full w-10 h-10 border">
           EM
