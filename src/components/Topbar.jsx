@@ -25,7 +25,7 @@ function TopBar() {
       <ButtonIcon
         content={"Add Policy"}
         href={"/policies/add"}
-        className="invisible"
+        display={currentPath === "/"}
       />
       <DropdownMenu>
         <DropdownMenuTrigger className="bg-white text-slate-900 p-2 rounded-full w-10 h-10 border">
