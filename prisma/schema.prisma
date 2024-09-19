@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model insurance_policies {
+  id                  String                @id @db.VarChar(10)
+  name                String?               @db.VarChar(255)
+  price               Decimal?              @db.Decimal(10, 2)
+  type                String?               @db.VarChar(50)
+  policy_associations policy_associations[]
+}
+
+model policy_associations {
+  insurance_policy_id String             @db.VarChar(10)
+  policy_holder_id    String             @db.VarChar(10)
+  insurance_policies  insurance_policies @relation(fields: [insurance_policy_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  policy_holders      policy_holders     @relation(fields: [policy_holder_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([insurance_policy_id, policy_holder_id])
+}
+
+model policy_holders {
+  id                  String                @id @db.VarChar(10)
+  email               String?               @unique @db.VarChar(255)
+  first_name          String?               @db.VarChar(50)
+  last_name           String?               @db.VarChar(50)
+  policy_associations policy_associations[]
+}
